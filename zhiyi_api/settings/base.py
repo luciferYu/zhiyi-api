@@ -9,12 +9,18 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
+from loguru import logger
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
+logger.add(os.path.join(BASE_DIR, 'logs', 'all.log'), rotation='1 week', enqueue=True, level="INFO",
+           retention='28 days')  # 一周一个日志文件，四周后自动删除
+logger.add(os.path.join(BASE_DIR, 'logs', 'send_violation_event.log'),
+           filter=lambda x: '[apiv1]' in x['message'], enqueue=True, rotation='1 week',
+           retention='28 days')
 
 # Application definition
 

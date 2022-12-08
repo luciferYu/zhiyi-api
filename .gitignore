@@ -133,3 +133,6 @@ logs/
 
 # migrations
 migrations/
+
+# idea
+.idea/
