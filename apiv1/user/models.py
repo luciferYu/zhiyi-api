@@ -3,24 +3,23 @@
 # @Author  : YuZhiYi
 # @Email   : 
 # @Software : zhiyi-api
-from django.contrib.auth.models import User, Group
+from django.db import models
 from libs.ZhiyiModels import ZhiyiAbstractModel
+from django.contrib.auth.models import User, Group
+
+
 
 # todo 权限角色相关
-# class AuthRole(models.Model):
-#     """角色表"""
-#     # e.g: add_user
-#     role_id = models.CharField('role id', max_length=64, blank=False, unique=True, help_text='用户角色标识')
-#     # e.g 添加用户
-#     role_name = models.CharField('role name', max_length=64, blank=False, help_text='用户角色名')
-#
-#     class Meta:
-#         db_table = 'auth_role'
-#
-#     def __str__(self):
-#         return self.role_name
-#
-#
+class Role(ZhiyiAbstractModel):
+    """角色表"""
+    role_id = models.CharField('role_id', max_length=64, blank=False, unique=True, help_text='用户角色标识')
+    role_name = models.CharField('role_name', max_length=64, blank=False, help_text='用户角色名')
+    role_status = models.CharField('role_name', max_length=64, blank=False, help_text='用户角色名')
+
+    def __str__(self):
+        return self.role_name
+
+
 # class AuthUserRole(models.Model):
 #     """用户角色关系表"""
 #     user_id = models.IntegerField('user id', blank=False, help_text='用户id', unique=True)
@@ -67,3 +66,6 @@ from libs.ZhiyiModels import ZhiyiAbstractModel
 #     class Meta:
 #         db_table = 'auth_cusergroups'
 #         unique_together = ('user_id', 'group_id')
+
+# todo 前端菜单
+class Menu(ZhiyiAbstractModel):

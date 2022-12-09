@@ -8,8 +8,5 @@ from .serializers import (
 )
 
 
-
-
-
 class ZhiyiTokenObtainPairView(TokenObtainPairView):
     serializer_class = ZhiyiTokenObtainPairSerializer
