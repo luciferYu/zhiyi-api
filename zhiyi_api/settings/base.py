@@ -22,6 +22,23 @@ logger.add(os.path.join(BASE_DIR, 'logs', 'all.log'), rotation='1 week', enqueue
 logger.add(os.path.join(BASE_DIR, 'logs', 'apiv1.log'),
            filter=lambda x: '[apiv1]' in x['message'], enqueue=True, rotation='1 week',
            retention='28 days')
+logger.add(os.path.join(BASE_DIR, 'logs', 'access.log'),
+           filter=lambda x: '[access]' in x['message'], enqueue=True, rotation='1 week',
+           retention='28 days')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,  # 禁用自带日志
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'WARNING',
+    },
+}
 
 # Application definition
 
@@ -47,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'libs.ZhiyiRestViews.ZhiyiMiddleware.AccessMiddleware',
 ]
 
 ROOT_URLCONF = 'zhiyi_api.urls'
