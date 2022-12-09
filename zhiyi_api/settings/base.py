@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 logger.add(os.path.join(BASE_DIR, 'logs', 'all.log'), rotation='1 week', enqueue=True, level="INFO",
            retention='28 days')  # 一周一个日志文件，四周后自动删除
-logger.add(os.path.join(BASE_DIR, 'logs', 'send_violation_event.log'),
+logger.add(os.path.join(BASE_DIR, 'logs', 'apiv1.log'),
            filter=lambda x: '[apiv1]' in x['message'], enqueue=True, rotation='1 week',
            retention='28 days')
 
@@ -114,8 +114,8 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTStatelessUserAuthentication',
-        #'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTStatelessUserAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     # 'DEFAULT_PERMISSION_CLASSES': [
     #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
