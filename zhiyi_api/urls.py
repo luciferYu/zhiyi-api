@@ -20,11 +20,13 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
     TokenVerifyView
 )
+from apiv1.auth.views import ZhiyiTokenObtainPairView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('apiv1/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    # path('apiv1/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('apiv1/auth/token/', ZhiyiTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('apiv1/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('apiv1/auth/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('apiv1/', include('apiv1.urls'))
