@@ -9,6 +9,7 @@ from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
 from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.renderers import JSONRenderer
 from django_filters.rest_framework import DjangoFilterBackend
+#from url_filter.integrations.drf import DjangoFilterBackend
 from rest_framework import mixins
 from .ZhiyiReturnResponse import returnResponse
 from .ZhiyiPagination import StandardResultsSetPagination
@@ -119,5 +120,5 @@ class ZhiyiAbstractModelViewSet(ZhiyiListModelMixin,
     # permission_classes = (IsAuthenticated,)
     throttle_classes = (UserRateThrottle, AnonRateThrottle)
     pagination_class = StandardResultsSetPagination
-    filter_backends = (DjangoFilterBackend,SearchFilter,OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
     renderer_classes = (JSONRenderer,)

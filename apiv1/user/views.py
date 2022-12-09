@@ -1,9 +1,6 @@
 from loguru import logger
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets, permissions, status
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework_simplejwt.views import TokenObtainPairView
 from libs.ZhiyiRestViews.ZhiyiAbstractViewSet import ZhiyiAbstractModelViewSet
 from .serializers import (
     UserSerializer
@@ -14,8 +11,14 @@ from .serializers import (
 class UserViewSet(ZhiyiAbstractModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
+
+    GET: /apiv1/user/?username=test&ordering=-id&page=1&page_size=5&username=yuzhiyi&fields=id,username
+
     """
     lookup_field = 'id'
+    filterset_fields = ('username',)  # 过滤字段
+    search_fields = ('username',)  # 搜索字段
+    ordering = ('id', 'username')  # 排序字段
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
     # permission_classes = [permissions.IsAuthenticated]
