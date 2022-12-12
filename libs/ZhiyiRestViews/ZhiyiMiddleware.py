@@ -64,7 +64,7 @@ class AccessMiddleware(deprecation.MiddlewareMixin):
         return response
 
     def process_exception(self, request, exception):
-        msg = '[access] 记录访问日志错误 '
+        msg = '[access] 记录访问日志错误 错误详情: %s' % traceback.format_exc()
         logger.error(msg)
         resp = {}
         resp['data'] = {}

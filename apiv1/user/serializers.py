@@ -3,7 +3,7 @@
 # @Author  : YuZhiYi
 # @Email   : 
 # @Software : zhiyi-api
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User, Group, Permission
 from rest_framework import serializers
 from drf_dynamic_fields import DynamicFieldsMixin
 

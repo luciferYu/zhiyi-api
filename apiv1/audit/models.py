@@ -5,6 +5,7 @@
 # @Software : zhiyi-api
 # todo 审计相关
 from libs.ZhiyiModels import ZhiyiAbstractModel
+from django.db import models
 
 
 class OperateLog(ZhiyiAbstractModel):

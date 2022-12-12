@@ -1,0 +1,4 @@
+d:\Python39\Scripts\pip3 install django-mptt -i https://mirrors.aliyun.com/pypi/simple/
+d:\Python39\Scripts\pip3 freeze
+d:\Python39\python.exe d:\myproject\zhiyi-api\manage.py makemigrations
+d:\Python39\python.exe d:\myproject\zhiyi-api\manage.py migrate
