@@ -9,6 +9,12 @@ from drf_dynamic_fields import DynamicFieldsMixin
 
 
 class UserSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
+    groups = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field='name'
+    )
+
 
     class Meta:
         model = User
@@ -19,4 +25,5 @@ class UserSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
 class GroupSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
     class Meta:
         model = Group
+        fields = '__all__'
         #fields = ['name']

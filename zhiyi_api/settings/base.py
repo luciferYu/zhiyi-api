@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'mptt',
     'django_mptt_admin',
+    'drf_yasg',
     'apiv1'
 
 ]

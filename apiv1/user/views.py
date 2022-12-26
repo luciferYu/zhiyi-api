@@ -19,7 +19,8 @@ class UserViewSet(ZhiyiAbstractModelViewSet):
     filterset_fields = ('username',)  # 过滤字段
     search_fields = ('username',)  # 搜索字段
     ordering = ('id', 'username')  # 排序字段
-    queryset = User.objects.all().order_by('-date_joined')
+    #queryset = User.objects.all().order_by('-date_joined')
+    queryset = User.objects.prefetch_related('groups').order_by('-date_joined')
     serializer_class = UserSerializer
     # permission_classes = [permissions.IsAuthenticated]
 
